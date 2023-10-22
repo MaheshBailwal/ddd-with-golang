@@ -1,0 +1,70 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/token": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "token"
+                ],
+                "summary": "create token",
+                "parameters": [
+                    {
+                        "description": "Query Params",
+                        "name": "params",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/TokenRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/TokenResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "TokenRequest": {
+            "type": "object",
+            "properties": {
+                "pasword": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                }
+            }
+        },
+        "TokenResponse": {
+            "type": "object",
+            "properties": {
+                "expiryTime": {
+                    "type": "integer"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

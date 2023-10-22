@@ -1,0 +1,120 @@
+2023/07/21 07:14:51 reverseProxy.go:101: OriginalRequest-> {"msg":"DEPT","cco":"GET","RET":"DNO,DES,RFN,MDA"}
+2023/07/21 07:14:51 access-token.go:36: in to
+2023/07/21 07:14:51 access-token.go:42: in to2
+2023/07/21 07:14:51 reverseProxy.go:115: ModifiedRequest-> http://{DEPT_SERVICE}:8003/api/v1/department
+2023/07/21 07:18:18 reverseProxy.go:101: OriginalRequest-> {"msg":"DEPT","cco":"GET","RET":"DNO,DES,RFN,MDA"}
+2023/07/21 07:18:18 reverseProxy.go:115: ModifiedRequest-> http://{DEPT_SERVICE}:8003/api/v1/department
+2023/07/21 07:19:56 reverseProxy.go:101: OriginalRequest-> {"msg":"DEPT","cco":"GET","RET":"DNO,DES,RFN,MDA"}
+2023/07/21 07:19:56 access-token.go:36: in to
+2023/07/21 07:19:56 access-token.go:42: in to2
+2023/07/21 07:19:56 reverseProxy.go:115: ModifiedRequest-> http://{DEPT_SERVICE}:8003/api/v1/department
+2023/07/21 08:15:46 reverseProxy.go:101: OriginalRequest-> {"msg":"DEPT","cco":"GET","RET":"DNO,DES,RFN,MDA"}
+2023/07/21 08:15:46 access-token.go:36: in to
+2023/07/21 08:15:46 access-token.go:42: in to2
+2023/07/21 08:15:46 reverseProxy.go:115: ModifiedRequest-> http://{DEPT_SERVICE}:8003/api/v1/department
+2023/07/21 08:19:48 reverseProxy.go:101: OriginalRequest-> {"msg":"DEPT","cco":"GET","RET":"DNO,DES,RFN,MDA"}
+2023/07/21 08:19:48 access-token.go:36: in to
+2023/07/21 08:19:48 access-token.go:42: in to2
+2023/07/21 08:19:48 reverseProxy.go:115: ModifiedRequest-> http://10.0.0.4:8003/api/v1/department
+2023/07/21 08:19:49 adaptor.go:98: OriginalResponse-> {"payload":[{"Number":123,"Name":"SECONF","ReferenceCode":"","ModifyUser":"bailwal","ModifyDate":"20230610"},{"Number":124,"Name":"four","ReferenceCode":"45","ModifyUser":"bailwal","ModifyDate":"20230704"},{"Number":231,"Name":"THRID","ReferenceCode":"","ModifyUser":"bailwal","ModifyDate":"20230611"}]}
+2023/07/21 08:19:49 adaptor.go:99: ModifiedResponse-> [ 
+ 
+     {
+         "DNO": "123",
+         "DES": "SECONF",
+         "RFN": "",
+         "MDA": "20230610"
+     }, 
+ 
+     {
+         "DNO": "124",
+         "DES": "four",
+         "RFN": "45",
+         "MDA": "20230704"
+     }, 
+ 
+     {
+         "DNO": "231",
+         "DES": "THRID",
+         "RFN": "",
+         "MDA": "20230611"
+     }]
+2023/07/21 08:19:56 reverseProxy.go:101: OriginalRequest-> {"msg":"DEPT","cco":"GET","RET":"DNO,DES"}
+2023/07/21 08:19:56 reverseProxy.go:115: ModifiedRequest-> http://10.0.0.4:8003/api/v1/department
+2023/07/21 08:19:56 reverseProxy.go:101: OriginalRequest-> {"MSG":"COUP","CCO":"GET","RET":"CPK,DNO,CUP,CPN,AMT,MDA","Pairs":"DNO"}
+2023/07/21 08:19:56 reverseProxy.go:115: ModifiedRequest-> http://10.0.0.4:8001/api/v1/coupon
+2023/07/21 08:19:56 adaptor.go:98: OriginalResponse-> {"payload":[{"Number":123,"Name":"SECONF","ReferenceCode":"","ModifyUser":"bailwal","ModifyDate":"20230610"},{"Number":124,"Name":"four","ReferenceCode":"45","ModifyUser":"bailwal","ModifyDate":"20230704"},{"Number":231,"Name":"THRID","ReferenceCode":"","ModifyUser":"bailwal","ModifyDate":"20230611"}]}
+2023/07/21 08:19:56 adaptor.go:99: ModifiedResponse-> [ 
+ 
+     {
+         "DNO": "123",
+         "DES": "SECONF",
+         "RFN": "",
+         "MDA": "20230610"
+     }, 
+ 
+     {
+         "DNO": "124",
+         "DES": "four",
+         "RFN": "45",
+         "MDA": "20230704"
+     }, 
+ 
+     {
+         "DNO": "231",
+         "DES": "THRID",
+         "RFN": "",
+         "MDA": "20230611"
+     }]
+2023/07/21 08:19:57 adaptor.go:98: OriginalResponse-> {"payload":[{"Id":22,"DeptNo":123,"DeptName":"SECONF","CouponPluNo":777,"CouponUpc":"00000000777","Value":7700,"ModifyUser":"sysad","ModifyDate":"20230630"},{"Id":23,"DeptNo":231,"DeptName":"THRID","CouponPluNo":888,"CouponUpc":"00000008888","Value":8800,"ModifyUser":"sysad","ModifyDate":"20230630"},{"Id":24,"DeptNo":123,"DeptName":"SECONF","CouponPluNo":99,"CouponUpc":"00000000999","Value":9900,"ModifyUser":"bailwal","ModifyDate":"20230701"},{"Id":25,"DeptNo":123,"DeptName":"SECONF","CouponPluNo":33,"CouponUpc":"00000000033","Value":4400,"ModifyUser":"bailwal","ModifyDate":"20230706"},{"Id":26,"DeptNo":124,"DeptName":"four","CouponPluNo":55,"CouponUpc":"00000000055","Value":5500,"ModifyUser":"bailwal","ModifyDate":"20230706"}]}
+2023/07/21 08:19:57 adaptor.go:99: ModifiedResponse-> [ 
+ 
+     {
+         "CPK": "22",
+         "DNO": "123",
+         "DNO_": "SECONF",
+         "CUP": "00000000777",
+         "CPN": "777",
+         "AMT": "7700",
+         "MDA": "20230630"
+     }, 
+ 
+     {
+         "CPK": "23",
+         "DNO": "231",
+         "DNO_": "THRID",
+         "CUP": "00000008888",
+         "CPN": "888",
+         "AMT": "8800",
+         "MDA": "20230630"
+     }, 
+ 
+     {
+         "CPK": "24",
+         "DNO": "123",
+         "DNO_": "SECONF",
+         "CUP": "00000000999",
+         "CPN": "99",
+         "AMT": "9900",
+         "MDA": "20230701"
+     }, 
+ 
+     {
+         "CPK": "25",
+         "DNO": "123",
+         "DNO_": "SECONF",
+         "CUP": "00000000033",
+         "CPN": "33",
+         "AMT": "4400",
+         "MDA": "20230706"
+     }, 
+ 
+     {
+         "CPK": "26",
+         "DNO": "124",
+         "DNO_": "four",
+         "CUP": "00000000055",
+         "CPN": "55",
+         "AMT": "5500",
+         "MDA": "20230706"
+     }]

@@ -1,0 +1,49 @@
+service:
+  id: 1
+  name: go-clean-architecture
+  version: 1.0.0
+  mode: development # development, stage or production
+  gracefulShutdownSecond: 10
+  api:
+    isEnabled: true
+    mode: debug # debug, release or test
+    host: 0.0.0.0
+    port: 8001
+  grpc:
+    isEnabled: true
+    port: 8002
+    isDevelopment: true
+
+logger:
+  level: info # debug, info, warn, error, dPanic, panic or fatal
+  mode: development # development or production
+  encoder: console # console or json
+
+tracer:
+  IsEnabled: true
+  host: localhost
+  port: 6831
+  Sampler: true
+  UseStdout: false
+
+postgres:
+  host: localhost
+  port: 5432
+  user: postgres
+  password: password@123
+  databaseName: go_clean_architecture
+  sslMode: disable # enable or disable
+  timeZone: Asia/Tehran
+
+mssql:
+  server: yourserver-sql.database.windows.net
+  port: 1433
+  user: sqladmin
+  password: password@123
+  database: p2
+
+remoteservice:
+   deparmentServiceIp: 192.168.1.32
+   deparmentServicePort: 8004
+   
+ 

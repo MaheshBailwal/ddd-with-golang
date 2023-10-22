@@ -1,0 +1,43 @@
+definitions:
+  TokenRequest:
+    properties:
+      pasword:
+        type: string
+      userName:
+        type: string
+    type: object
+  TokenResponse:
+    properties:
+      expiryTime:
+        type: integer
+      token:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /token:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Query Params
+        in: body
+        name: params
+        schema:
+          $ref: '#/definitions/TokenRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/TokenResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+      summary: create token
+      tags:
+      - token
+swagger: "2.0"

@@ -1,0 +1,9 @@
+    {
+        "CPK": "{Id#}",
+        "DNO": "{DeptNo#}",
+        "DNO_": "{DeptName#}",
+        "CUP": "{CouponUpc#}",
+        "CPN": "{CouponPluNo#}",
+        "AMT": "{Value#}",
+        "MDA": "{ModifyDate#}"
+    }

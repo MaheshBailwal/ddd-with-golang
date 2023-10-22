@@ -1,0 +1,167 @@
+definitions:
+  ApiError:
+    properties:
+      errorCode:
+        allOf:
+        - $ref: '#/definitions/core.ErrCode'
+        format: int32
+      message:
+        type: string
+      meta:
+        x-nullable: true
+        x-omitempty: true
+    type: object
+  ApiResponse-ApiError:
+    properties:
+      payload:
+        $ref: '#/definitions/ApiError'
+    type: object
+  ApiResponse-array_dtos_DepartmentDetail:
+    properties:
+      payload:
+        items:
+          $ref: '#/definitions/dtos.DepartmentDetail'
+        type: array
+    type: object
+  ApiResponse-int:
+    properties:
+      payload:
+        type: integer
+    type: object
+  DepartmentId:
+    properties:
+      number:
+        type: integer
+    type: object
+  DepartmentSet:
+    properties:
+      name:
+        type: string
+      number:
+        type: integer
+      referenceCode:
+        type: string
+    required:
+    - name
+    - number
+    type: object
+  core.ErrCode:
+    enum:
+    - 1001
+    - 1002
+    type: integer
+    x-enum-varnames:
+    - CouponNotFound
+    - CouponInUse
+  dtos.DepartmentDetail:
+    properties:
+      modifyDate:
+        type: string
+      modifyUser:
+        type: string
+      name:
+        type: string
+      number:
+        type: integer
+      referenceCode:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /department:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: department ids
+        in: body
+        name: ids
+        schema:
+          items:
+            $ref: '#/definitions/DepartmentId'
+          type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: boolean
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ApiResponse-ApiError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ApiResponse-ApiError'
+      security:
+      - Bearer: []
+      summary: delete department by number
+      tags:
+      - department
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: filters for data
+        in: query
+        name: filter
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ApiResponse-array_dtos_DepartmentDetail'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ApiResponse-ApiError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ApiResponse-ApiError'
+      security:
+      - Bearer: []
+      summary: get all departments
+      tags:
+      - department
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Query Params
+        in: body
+        name: params
+        schema:
+          $ref: '#/definitions/DepartmentSet'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ApiResponse-int'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ApiResponse-ApiError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ApiResponse-ApiError'
+      security:
+      - Bearer: []
+      summary: insert/update department
+      tags:
+      - department
+securityDefinitions:
+  Bearer:
+    description: Type "Bearer" followed by a space and JWT token.
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

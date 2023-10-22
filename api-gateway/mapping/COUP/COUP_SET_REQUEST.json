@@ -1,0 +1,10 @@
+{
+    "couponPluNo": {CPN#},
+    "couponUpc": "{CUP#}",
+    "deptNo": {DNO#},
+    "id": {CPK#},
+    "value": {AMT#}
+  }
+
+
+ 

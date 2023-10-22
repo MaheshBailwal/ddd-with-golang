@@ -1,0 +1,6 @@
+    {
+        "DNO": "{Number#}",
+        "DES": "{Name#}",
+        "RFN": "{ReferenceCode#}",
+        "MDA": "{ModifyDate#}"
+    }

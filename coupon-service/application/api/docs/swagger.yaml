@@ -1,0 +1,165 @@
+definitions:
+  ApiError:
+    properties:
+      errorCode:
+        allOf:
+        - $ref: '#/definitions/core.ErrCode'
+        format: int32
+      message:
+        type: string
+      meta:
+        x-nullable: true
+        x-omitempty: true
+    type: object
+  ApiResponse-ApiError:
+    properties:
+      payload:
+        $ref: '#/definitions/ApiError'
+    type: object
+  ApiResponse-array_dtos_CouponProfileDetail:
+    properties:
+      payload:
+        items:
+          $ref: '#/definitions/dtos.CouponProfileDetail'
+        type: array
+    type: object
+  ApiResponse-int:
+    properties:
+      payload:
+        type: integer
+    type: object
+  CouponProfileUpdate:
+    type: object
+  core.ErrCode:
+    enum:
+    - 1001
+    - 1002
+    type: integer
+    x-enum-varnames:
+    - CouponNotFound
+    - CouponInUse
+  dtos.CouponProfileDetail:
+    properties:
+      couponPluNo:
+        $ref: '#/definitions/dtos.NullInt64'
+      couponUpc:
+        type: integer
+      deptNo:
+        type: integer
+      id:
+        type: integer
+      modifyDate:
+        type: integer
+      modifyUser:
+        type: string
+      value:
+        type: integer
+    type: object
+  dtos.NullInt64:
+    type: object
+info:
+  contact: {}
+paths:
+  /coupon:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: coupan ids
+        in: body
+        name: ids
+        schema:
+          items:
+            type: integer
+          type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: boolean
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ApiResponse-ApiError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ApiResponse-ApiError'
+      security:
+      - Bearer: []
+      summary: delete coupons by key
+      tags:
+      - coupon
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: filters for data
+        in: query
+        name: filter
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ApiResponse-array_dtos_CouponProfileDetail'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ApiResponse-ApiError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ApiResponse-ApiError'
+      security:
+      - Bearer: []
+      summary: get all coupons
+      tags:
+      - coupon
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: some description
+        enum:
+        - en
+        - fa
+        in: header
+        name: Accept-Language
+        type: string
+      - description: Query Params
+        in: body
+        name: params
+        schema:
+          $ref: '#/definitions/CouponProfileUpdate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ApiResponse-int'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ApiResponse-ApiError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ApiResponse-ApiError'
+      security:
+      - Bearer: []
+      summary: insert/update coupon
+      tags:
+      - coupon
+securityDefinitions:
+  Bearer:
+    description: Type "Bearer" followed by a space and JWT token.
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

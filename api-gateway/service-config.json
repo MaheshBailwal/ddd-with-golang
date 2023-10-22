@@ -1,0 +1,5 @@
+{
+    "COUP_SERVICE": "10.0.0.4",
+    "DEPT_SERVICE": "10.0.0.4",
+    "IDENTITY_PROVIDER": "10.0.0.4"
+}

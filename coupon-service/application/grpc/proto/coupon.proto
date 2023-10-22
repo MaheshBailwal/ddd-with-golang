@@ -1,0 +1,23 @@
+syntax = "proto3";
+package pb;
+option go_package ="invafresh.com/couponserver/pb";
+
+message CouponProfileDetail {
+	int32 Id    = 1;      
+	int32 dept_no   = 2;   
+	optional int32 coupon_pluno= 3; 
+	int32 coupon_upc   = 4;
+	int32 Value      = 5;
+	int32 modify_user  = 6;
+	int32 modify_date  = 7;
+}
+
+message CouponProfileDetails{
+    repeated CouponProfileDetail CouponProfile =1;
+}
+
+message EmptyParams {}
+
+service CouponService {
+    rpc GetAll(EmptyParams) returns (CouponProfileDetails) {}
+}
